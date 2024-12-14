@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style>
+            /* Change the color of the SCHOOL EVENT MANAGEMENT text */
+            header h1 {
+                color: #030303; /* Dark slate color */
+            }
+        </style>
+        <h1></h1>
+    </header>
+    
+    
+    <style>
+        /* Background image styling */
+        body {
+            background-image: url('campus image.jpg'); /* Add the path to your image */
+            background-size: cover; /* Ensures the image covers the entire screen */
+            background-position: center center; /* Centers the image */
+            background-attachment: fixed; /* Fixes the background image during scroll */
+            color: white; /* Makes the text color white for better contrast with the background */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Semi-transparent header */
+        header {
+            background-color: #0717a359; /* Semi-transparent background for the header */
+            padding: 20px;
+            text-align: left; /* Aligns the header to the left */
+            font-family: Verdana, sans-serif; /* Updated font */
+            font-weight: bold; /* Makes the text bold */
+        }
+
+        /* Text styling */
+        h1, h2, p {
+            font-family: Verdana, sans-serif; /* Updated font */
+            font-weight: bold; /* Makes text bold */
+        }
+
+        /* Center the content */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px); /* Full viewport height minus header height */
+        }
+
+        /* Button container */
+        .options {
+            display: grid; /* Uses a grid layout */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive layout */
+            gap: 20px; /* Space between buttons */
+            width: 80%; /* Ensures buttons are aligned centrally */
+            max-width: 500px; /* Limits the button container width */
+        }
+
+        /* Button styling */
+        .options button {
+            background: linear-gradient(to right, #4facfe, #00f2fe); /* Gradient color */
+            color: white; /* Text color */
+            border: none; /* Removes border */
+            padding: 12px 25px; /* Spacing */
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 25px; /* Rounded edges */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adds a shadow */
+            transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+            text-align: center;
+        }
+
+        .options button:hover {
+            transform: scale(1.05); /* Slightly increases size on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increases shadow on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <style>
+            /* Styling for the text in the main section */
+            #home-options h2 {
+                color: #090908; /* Gold color for the heading */
+            }
+    
+            #home-options p {
+                color: #0d0d0c; /* Khaki color for the paragraph */
+            }
+    
+            .options button {
+                background: linear-gradient(to right, #4facfe, #00f2fe); /* Gradient color for buttons */
+                color: white; /* White text for buttons */
+                border: none; /* Removes border */
+                padding: 12px 25px; /* Spacing */
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 25px; /* Rounded edges */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adds a shadow */
+                transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+                text-align: center;
+            }
+    
+            .options button:hover {
+                transform: scale(1.05); /* Slightly increases size on hover */
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increases shadow on hover */
+            }
+        </style>
+        
+        <section id="home-options">
+            <h2>Welcome to the SCHOOL EVENT MANAGEMENT</h2>
+            <p>Pick an option:</p>
+            <div class="options">
+                <button onclick="navigateTo('login.html')">Login</button>
+                <button onclick="navigateTo('register.html')">Register</button>
+                <button onclick="navigateTo('admin login.html')">Admin Login</button>
+                <button onclick="navigateTo('Event-list.html')">View Event List</button>
+            </div>
+        </section>
+    </main>
+    
+
+    <script>
+        // Function to navigate to the selected page
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
+
