@@ -3,108 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Events List</title>
+    <title>Create Event</title>
     <link rel="stylesheet" href="styles.css">
+
     <style>
+        /* Background image styling */
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('campus image.jpg');
+            background-image: url('campus-image.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-attachment: fixed;
             color: white;
+            font-family: Arial, sans-serif;
         }
 
         header {
             text-align: center;
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         h1 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin: 0;
         }
 
-        main {
-            margin: 50px auto;
-            max-width: 800px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 8px;
+        #event-form {
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        table {
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+
+        input, select, textarea {
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
         }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid white;
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
         }
 
-        th {
-            background-color: rgba(0, 0, 128, 0.8);
+        button:hover {
+            background-color: #0056b3;
         }
 
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        a {
+        .back-to-home {
+            margin-top: 20px;
+            display: block;
             color: white;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #004080;
+            font-size: 1.2em;
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
             border-radius: 5px;
         }
 
-        a:hover {
-            background-color: #003060;
+        .back-to-home:hover {
+            background-color: #555;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>School Events</h1>
-        <a href="index.html">Back to Home</a>
+        <h1>Display Event</h1>
     </header>
 
     <main>
-        <h2>Upcoming Events</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Event Name</th>
-                    <th>Date</th>
-                    <th>Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Science Fair</td>
-                    <td>January 15, 2024</td>
-                    <td>Auditorium</td>
-                </tr>
-                <tr>
-                    <td>Sports Day</td>
-                    <td>February 20, 2024</td>
-                    <td>Main Ground</td>
-                </tr>
-                <tr>
-                    <td>Cultural Fest</td>
-                    <td>March 10, 2024</td>
-                    <td>Conference Hall</td>
-                </tr>
-            </tbody>
-        </table>
+        <section id="event-form">
+            <form id="Display-event-form">
+                <label for="event-name">Event Name:</label>
+                <input type="text" id="event-name" name="event-name" required>
 
-       
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" name="event-date" required>
+
+                <label for="event-location">Location:</label>
+                <input type="text" id="event-location" name="event-location" required>
+
+                <label for="event-description">Description:</label>
+                <textarea id="event-description" name="event-description" rows="4" required></textarea>
+
+                <label for="event-type">Event Type:</label>
+                <select id="event-type" name="event-type" required>
+                    <option value="workshop">Workshop</option>
+                    <option value="seminar">Seminar</option>
+                    <option value="conference">Conference</option>
+                </select>
+
+                <label for="event-seats">Available Seats:</label>
+                <input type="number" id="event-seats" name="event-seats" required>
+
+                <button type="submit">Create Event</button>
+            </form>
+
+            <a href="index.html" class="back-to-home">Back to Home</a>
+        </section>
     </main>
+
+    <script>
+        document.getElementById('create-event-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const eventName = document.getElementById('event-name').value;
+            const eventDate = document.getElementById('event-date').value;
+            const eventLocation = document.getElementById('event-location').value;
+            const eventDescription = document.getElementById('event-description').value;
+            const eventType = document.getElementById('event-type').value;
+            const eventSeats = document.getElementById('event-seats').value;
+
+            // Create an event object
+            const newEvent = {
+                id: Date.now().toString(), // Unique ID for the event
+                name: eventName,
+                date: eventDate,
+                location: eventLocation,
+                description: eventDescription,
+                type: eventType,
+                remainingSeats: parseInt(eventSeats, 10)
+            };
+
+            // Save the event to localStorage
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+            events.push(newEvent);
+            localStorage.setItem('events', JSON.stringify(events));
+
+            alert('Event created successfully!');
+            document.getElementById('create-event-form').reset();
+        });
+    </script>
 </body>
 </html>
