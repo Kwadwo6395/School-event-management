@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Events List</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('campus image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        main {
+            margin: 50px auto;
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid white;
+        }
+
+        th {
+            background-color: rgba(0, 0, 128, 0.8);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #004080;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #003060;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>School Events</h1>
+        <a href="index.html">Back to Home</a>
+    </header>
+
+    <main>
+        <h2>Upcoming Events</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Science Fair</td>
+                    <td>January 15, 2024</td>
+                    <td>Auditorium</td>
+                </tr>
+                <tr>
+                    <td>Sports Day</td>
+                    <td>February 20, 2024</td>
+                    <td>Main Ground</td>
+                </tr>
+                <tr>
+                    <td>Cultural Fest</td>
+                    <td>March 10, 2024</td>
+                    <td>Conference Hall</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="logout.html">Logout</a>
+    </main>
+</body>
+</html>
