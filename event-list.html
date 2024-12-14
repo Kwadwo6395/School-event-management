@@ -107,7 +107,6 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%;
             margin-top: 10px;
         }
 
@@ -127,6 +126,27 @@
         }
 
         #event-filter:hover {
+            background-color: #003060;
+        }
+
+        .event-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .event-buttons a {
+            background-color: #004080;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .event-buttons a:hover {
             background-color: #003060;
         }
     </style>
@@ -177,7 +197,10 @@
                     <p>Location: ${event.location}</p>
                     <p>Description: ${event.description}</p>
                     <p>Remaining Seats: ${event.remainingSeats}</p>
-                    <button onclick="rsvpEvent('${event.id}')">RSVP</button>
+                    <div class="event-buttons">
+                        <a href="create-event.html?id=${event.id}">Edit Event</a>
+                        <a href="#" onclick="rsvpEvent('${event.id}')">RSVP</a>
+                    </div>
                 `;
                 eventContainer.appendChild(eventCard);
 
@@ -232,30 +255,4 @@
             const filteredEvents = filter === 'all' ? events : events.filter(event => event.type === filter);
 
             // Clear current event list
-            document.getElementById('event-container').innerHTML = '';
-
-            // Display filtered events
-            filteredEvents.forEach(event => {
-                const eventCard = document.createElement('div');
-                eventCard.classList.add('event-card');
-                eventCard.innerHTML = `
-                    <h3>${event.name}</h3>
-                    <p>Date: ${event.date}</p>
-                    <p>Location: ${event.location}</p>
-                    <p>Description: ${event.description}</p>
-                    <p>Remaining Seats: ${event.remainingSeats}</p>
-                    <button onclick="rsvpEvent('${event.id}')">RSVP</button>
-                `;
-                document.getElementById('event-container').appendChild(eventCard);
-            });
-
-            // Update the calendar with filtered events
-            $('#calendar').fullCalendar('removeEvents');
-            $('#calendar').fullCalendar('addEventSource', filteredEvents);
-        }
-
-        // Load events when the page loads
-        window.onload = loadEvents;
-    </script>
-</body>
-</html>  edit the code and change the button layout and link the eventlist to the create event code
+            document.getElementById('event
