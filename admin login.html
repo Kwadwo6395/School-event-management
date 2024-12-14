@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Event</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="styles.css">
 
     <style>
         /* Background image styling */
         body {
-            background-image: url('campus-image.jpg');
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            color: white;
+            background-image: url('campus image.jpg'); /* Replace with your campus image path */
+            background-size: cover; /* Ensures the image covers the entire screen */
+            background-position: center center; /* Centers the image */
+            background-attachment: fixed; /* Fixes the background image during scroll */
+            color: white; /* Makes the text color white for better contrast with the background */
             font-family: Arial, sans-serif;
         }
 
         header {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for header */
             padding: 30px 20px;
         }
 
@@ -28,14 +28,14 @@
             margin: 0;
         }
 
-        #event-form {
-            margin-top: 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-            width: 400px;
-            margin: 0 auto;
+        #admin-login-form {
+            margin-top: 100px;
             text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for the form */
+            padding: 40px;
+            border-radius: 15px;
+            width: 350px;
+            margin: 0 auto;
         }
 
         label {
@@ -44,7 +44,7 @@
             font-size: 1.2em;
         }
 
-        input, select, textarea {
+        input {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -56,7 +56,7 @@
         button {
             width: 100%;
             padding: 12px;
-            background-color: #007bff;
+            background-color: #007bff; /* Blue button */
             color: white;
             border: none;
             border-radius: 5px;
@@ -65,16 +65,16 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
         }
 
         .back-to-home {
-            margin-top: 20px;
             display: block;
+            margin-top: 20px;
+            text-align: center;
             color: white;
             text-decoration: none;
             font-size: 1.2em;
-            text-align: center;
             padding: 10px;
             background-color: #333;
             border-radius: 5px;
@@ -83,74 +83,72 @@
         .back-to-home:hover {
             background-color: #555;
         }
+
+        .logout-button {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px;
+            background-color: #ff4c4c;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #d43f3f;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Display Event</h1>
+        <h1>Admin Login</h1>
     </header>
 
     <main>
-        <section id="event-form">
-            <form id="Display-event-form">
-                <label for="event-name">Event Name:</label>
-                <input type="text" id="event-name" name="event-name" required>
+        <section id="admin-login-form">
+            <form id="login-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-                <label for="event-date">Date:</label>
-                <input type="date" id="event-date" name="event-date" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
 
-                <label for="event-location">Location:</label>
-                <input type="text" id="event-location" name="event-location" required>
-
-                <label for="event-description">Description:</label>
-                <textarea id="event-description" name="event-description" rows="4" required></textarea>
-
-                <label for="event-type">Event Type:</label>
-                <select id="event-type" name="event-type" required>
-                    <option value="workshop">Workshop</option>
-                    <option value="seminar">Seminar</option>
-                    <option value="conference">Conference</option>
-                </select>
-
-                <label for="event-seats">Available Seats:</label>
-                <input type="number" id="event-seats" name="event-seats" required>
-
-                <button type="submit">Create Event</button>
+                <button type="submit">Login</button>
             </form>
 
+            <!-- Back to Home Button -->
             <a href="index.html" class="back-to-home">Back to Home</a>
+            <!-- Logout Button -->
+            <button class="logout-button" id="logout-button">Logout</button>
         </section>
     </main>
 
     <script>
-        document.getElementById('create-event-form').addEventListener('submit', function (event) {
+        document.getElementById('login-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
-            const eventName = document.getElementById('event-name').value;
-            const eventDate = document.getElementById('event-date').value;
-            const eventLocation = document.getElementById('event-location').value;
-            const eventDescription = document.getElementById('event-description').value;
-            const eventType = document.getElementById('event-type').value;
-            const eventSeats = document.getElementById('event-seats').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-            // Create an event object
-            const newEvent = {
-                id: Date.now().toString(), // Unique ID for the event
-                name: eventName,
-                date: eventDate,
-                location: eventLocation,
-                description: eventDescription,
-                type: eventType,
-                remainingSeats: parseInt(eventSeats, 10)
-            };
+            // Check admin credentials
+            if (email === 'nk1@cloud.com' && password === 'nk123') {
+                alert('Admin login successful!');
+                localStorage.setItem('loggedInUser', JSON.stringify({ name: 'Admin', role: 'admin' }));
+                window.location.href = 'create-event.html'; // Redirect to Create Event page
+            } else {
+                alert('Invalid admin credentials!');
+            }
+        });
 
-            // Save the event to localStorage
-            const events = JSON.parse(localStorage.getItem('events')) || [];
-            events.push(newEvent);
-            localStorage.setItem('events', JSON.stringify(events));
-
-            alert('Event created successfully!');
-            document.getElementById('create-event-form').reset();
+        // Logout functionality
+        document.getElementById('logout-button').addEventListener('click', function () {
+            localStorage.removeItem('loggedInUser'); // Clear user session data
+            alert('You have been logged out.');
+            window.location.href = 'index.html'; // Redirect to homepage
         });
     </script>
 </body>
