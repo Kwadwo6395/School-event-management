@@ -68,7 +68,7 @@
             background-color: #0056b3; /* Darker blue on hover */
         }
 
-        .back-to-home {
+        .back-to-home, .logout {
             display: block;
             margin-top: 20px;
             text-align: center;
@@ -80,7 +80,7 @@
             border-radius: 5px;
         }
 
-        .back-to-home:hover {
+        .back-to-home:hover, .logout:hover {
             background-color: #555;
         }
     </style>
@@ -101,6 +101,9 @@
 
                 <button type="submit">Login</button>
             </form>
+
+            <!-- Logout Button -->
+            <a href="index.html" class="logout" id="logout-button">Logout</a>
 
             <!-- Back to Home Button -->
             <a href="index.html" class="back-to-home">Back to Home</a>
@@ -123,6 +126,13 @@
                 alert('Invalid admin credentials!');
             }
         });
+
+        // Logout functionality
+        document.getElementById('logout-button').addEventListener('click', function () {
+            localStorage.removeItem('loggedInUser'); // Clear user session data
+            alert('You have been logged out.');
+        });
     </script>
 </body>
 </html>
+
