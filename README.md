@@ -24,7 +24,8 @@ How to Run the Project
 3.	Use the following default credentials to log in:
 o	Email: nk123@icloud.com
 o	Password: nk123
-4.	After successful login, you will be redirected to the event list page.
+admin; Email: kwadwo@icloud.com password:nk123
+5.	After successful login, you will be redirected to the event list page.
 Folder Structure
 •	index.html: Home page with navigation.
 •	login.html: User login page.
