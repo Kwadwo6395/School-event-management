@@ -150,6 +150,24 @@
             alert('You have been logged out.');
             window.location.href = 'index.html'; // Redirect to homepage
         });
+
+        // Save created events to localStorage
+        function saveEvent(event) {
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+            events.push(event);
+            localStorage.setItem('events', JSON.stringify(events));
+        }
+
+        // Example usage (this can be integrated into the create-event.html page):
+        // saveEvent({
+        //     id: 'event1',
+        //     name: 'Campus Workshop',
+        //     date: '2024-12-20',
+        //     location: 'Hall A',
+        //     description: 'An amazing workshop on AI.',
+        //     remainingSeats: 50,
+        //     type: 'workshop'
+        // });
     </script>
 </body>
 </html>
